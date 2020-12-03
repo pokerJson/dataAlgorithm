@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //1、斐波那契数列,求第N个数是什么？
-        print(feibnq1(n: 30))
+        print(feibnq2(n: 30))
         self.excuteTime(name: "feibnq1") {//尾随逃逸闭包
             self.feibnq1(n: 30)
         }
@@ -20,7 +20,9 @@ class ViewController: UIViewController {
             self.feibnq2(n: 30)
         }
 
-
+        //2 链表
+        lianbiao()
+        
         
     }
     func feibnq1(n: Int) -> Int {
@@ -53,7 +55,16 @@ class ViewController: UIViewController {
         return second
     }
 
-    
+    func lianbiao() {
+        let link = LinkList()
+        link.add(node: Node(e: 11))
+        link.add(node: Node(e: 22))
+        link.add(node: Node(e: 33))
+        link.insertNode(index: 1, node: Node(e: 100))
+        print(link.count)
+        print(link.indexOf(index: 1).element)
+
+    }
 
 }
 

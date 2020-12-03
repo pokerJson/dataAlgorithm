@@ -31,7 +31,20 @@ class LinkList: NSObject {
     }
     //删除一个节点
     func deleteNode(index: Int) {
-        
+        guard index < count else { return }
+        guard index >= 0 else { return }
+        guard index > 0 else {
+            //== 0
+            let node = first
+            first = node?.next
+            size -= 1
+            return
+        }
+        // 1...<index
+        let willDeleteNode = indexOf(index: index)
+        let pre = indexOf(index: index - 1)
+        pre.next = willDeleteNode.next
+        size -= 1
     }
     //插入一个节点
     func insertNode(index: Int,node: Node) {

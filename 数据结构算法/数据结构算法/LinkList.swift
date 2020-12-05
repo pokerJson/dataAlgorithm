@@ -31,7 +31,7 @@ class LinkList: NSObject {
     }
     //删除一个节点
     func deleteNode(index: Int) {
-        guard index < count else { return }
+        guard index < count else { print("请输入小于链表个数的索引"); return }
         guard index >= 0 else { return }
         guard index > 0 else {
             //== 0

@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         print(link.indexOf(index: 1).element)
         
         print(link.indexOf(index: 0).element)
-        link.deleteNode(index: 0)
+        link.deleteNode(index: 10)
         print(link.indexOf(index: 0).element)
 
 

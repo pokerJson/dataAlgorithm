@@ -25,7 +25,8 @@ class LinkList: NSObject {
             return
         }
         let num = count
-        let pre: Node =  indexOf(index: num - 1)
+        guard let nod = indexOf(index: num - 1) else { return }
+        let pre: Node = nod
         pre.next = node
         size += 1
     }
@@ -43,11 +44,15 @@ class LinkList: NSObject {
         // 1...<index
         let willDeleteNode = indexOf(index: index)
         let pre = indexOf(index: index - 1)
-        pre.next = willDeleteNode.next
+        pre?.next = willDeleteNode?.next
         size -= 1
     }
     //插入一个节点
     func insertNode(index: Int,node: Node) {
+        guard index <= count - 1 else {
+            print("越界了")
+            return
+        }
         guard index != 0 else {
             first = node
             size += 1
@@ -55,17 +60,41 @@ class LinkList: NSObject {
         }
         let pre = indexOf(index: index - 1)
         let cur = indexOf(index: index)
-        pre.next = node
+        pre?.next = node
         node.next = cur
         size += 1
     }
     //获取index的节点
-    func indexOf(index: Int) -> Node {
+    func indexOf(index: Int) -> Node? {
+        guard index < count else {
+            print("越界了")
+            return nil
+        }
         var node = first
         for _ in 0..<index {
             node = node?.next
         }
         return node!
+    }
+    //清除所有
+    func clear() {
+        size = 0
+    }
+    //获取第一个元素
+    func getFirst() -> Node? {
+        guard count > 0 else {
+            print("链表是空")
+            return nil
+        }
+        return first
+    }
+    //获取链表最后一个元素
+    func getLast() -> Node? {
+        guard count > 0 else {
+            print("链表是空")
+            return nil
+        }
+        return indexOf(index: count - 1)
     }
     
 }

@@ -64,15 +64,20 @@ class ViewController: UIViewController {
         link.add(node: Node(e: 55))
         link.insertNode(index: 1, node: Node(e: 100))
         print(link.count)
-        print(link.indexOf(index: 1).element)
+        print(link.indexOf(index: 1)?.element)
         link.deleteNode(index: 1)
-        print(link.indexOf(index: 1).element)
+        print(link.indexOf(index: 1)?.element)
         
-        print(link.indexOf(index: 0).element)
+        print(link.indexOf(index: 0)?.element)
         link.deleteNode(index: 10)
-        print(link.indexOf(index: 0).element)
+        print(link.indexOf(index: 0)?.element)
 
-
+        link.clear()
+        link.indexOf(index: 2)
+        link.insertNode(index: 1, node: Node(e: 100))
+        print(link.count)
+        link.add(node: Node(e: 898989))
+        print(link.getLast()?.element)
 
     }
 
